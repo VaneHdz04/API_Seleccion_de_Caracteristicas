@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Comparativa — Selección de Características</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+        background-image: url('https://i.pinimg.com/1200x/39/81/fa/3981fa4cee1bb2fab7a0e0c401d3b528.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(14, 56, 106, 0.9);
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid #93bdef;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: #fff;
+      text-shadow: 0px 0px 12px rgba(147, 189, 239, 0.4);
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* 🔹 Panel más visible (menos transparencia) */
+    .panel {
+      flex: 1;
+      min-width: 480px;
+      background: rgba(255, 255, 255, 0.85); /* menos transparente */
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+      color: #111; /* texto oscuro dentro del panel */
+    }
+
+    .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .panel h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
+      color: #0e386a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      text-shadow: 0px 0px 6px rgba(147, 189, 239, 0.4);
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      background-color: rgba(65, 107, 157, 0.2);
+      padding: 0.6rem 1rem;
+      border-left: 6px solid #224c7e;
+      border-radius: 8px;
+      color: #0e386a;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+    }
+
+    .table {
+      background-color: rgba(255, 255, 255, 1);
+      color: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(65, 107, 157, 0.2);
+    }
+
+    .table th {
+      background-color: #224c7e;
+      color: #fff;
+      text-align: center;
+    }
+
+    .table td {
+      color: #111;
+      text-align: center;
+    }
+
+    pre {
+      background-color: rgba(255, 255, 255, 1);
+      color: #111;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .f1-card {
+      text-align: center;
+      background: linear-gradient(145deg, rgba(110, 152, 202, 0.3), rgba(147, 189, 239, 0.6));
+      border: 3px solid #93bdef;
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin: 1.2rem 0;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(147, 189, 239, 0.7);
+    }
+
+    .f1-card:hover {
+      transform: scale(1.05);
+      background: linear-gradient(145deg, rgba(147, 189, 239, 0.7), rgba(110, 152, 202, 0.3));
+    }
+
+    .f1-card h3 {
+      font-size: 1.3rem;
+      color: #0e386a;
+      margin-bottom: 0.6rem;
+    }
+
+    .f1-card span {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .feature-card {
+      background-color: rgba(147, 189, 239, 0.3);
+      border: 2px solid #6e98ca;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      box-shadow: 0 0 12px rgba(147, 189, 239, 0.3);
+    }
+
+    .feature-card h5 {
+      color: #0e386a;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    p {
+    font-size: 20px;
+    }
+
+
+    .tag {
+      display: inline-block;
+      background-color: #0e386a;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      margin: 0.2rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-custom {
+      background-color: #224c7e;
+      border: none;
+      color: white;
+      padding: 0.9rem 1.6rem;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .btn-custom:hover {
+      background-color: #416b9d;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(14, 56, 106, 0.9);
+      color: #cfd9e6;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .content {
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="bi bi-cpu"></i> Técnicas de Selección de Características — Detección de Malware en Android</h1>
+  </header>
+
+  <div class="content">
+    {% if error %}
+      <div class="alert alert-danger w-100 text-center">{{ error }}</div>
+    {% else %}
+
+      <!-- 🔹 Panel izquierdo -->
+      <div class="panel">
+        <h2><i class="bi bi-bar-chart-line"></i> Análisis con todas las características</h2>
+        <p>Se muestra el rendimiento del modelo al utilizar <strong>todas las variables</strong> del dataset sin reducción.</p>
+
+        <div class="f1-card">
+          <h3><i class="bi bi-activity"></i> F1 Score — Completo</h3>
+          <span>{{ f1_full }}</span>
+        </div>
+
+        <div class="section-title"><i class="bi bi-table"></i> Vista general del DataFrame</div>
+        <div class="section-desc">Muestra los primeros registros del dataset para conocer su estructura y formato general.</div>
+        <div class="table-responsive">{{ df_head_html|safe }}</div>
+
+        <div class="section-title"><i class="bi bi-bar-chart"></i> Descripción estadística</div>
+        <div class="section-desc">Incluye medidas estadísticas como media, desviación estándar y valores extremos.</div>
+        <div class="table-responsive">{{ df_describe_html|safe }}</div>
+
+        <div class="section-title"><i class="bi bi-info-circle"></i> Estructura del DataFrame</div>
+        <div class="section-desc">Información sobre los tipos de datos y valores no nulos en cada columna.</div>
+        <pre>{{ df_info_text }}</pre>
+      </div>
+
+      <!-- 🔸 Panel derecho -->
+      <div class="panel">
+        <h2><i class="bi bi-stars"></i> Análisis con las 10 características seleccionadas</h2>
+        <p>Se muestran los resultados obtenidos tras aplicar selección de características y conservar solo las <strong>10 más relevantes</strong>.</p>
+
+        <div class="f1-card">
+          <h3><i class="bi bi-lightning-charge"></i> F1 Score — Top 10</h3>
+          <span>{{ f1_reduced }}</span>
+        </div>
+
+        <div class="section-title"><i class="bi bi-diagram-3"></i> Importancias principales (top 20)</div>
+        <div class="section-desc">Variables con mayor peso en la predicción antes de la reducción.</div>
+        <div class="table-responsive">{{ feature_importances_sorted_html|safe }}</div>
+
+        <div class="section-title"><i class="bi bi-graph-up"></i> Gráfica: Importancia de las Características</div>
+        <div class="text-center my-3">
+          <img src="{{ importance_plot_url }}" alt="Importancia de las Características" class="img-fluid rounded shadow-lg" style="max-width: 100%; border: 2px solid #224c7e;">
+        </div>
+
+        <div class="feature-card">
+          <h5><i class="bi bi-list-stars"></i> Características seleccionadas</h5>
+          {% for feat in top_features %}
+            <span class="tag">{{ feat }}</span>
+          {% endfor %}
+        </div>
+
+
+        
+
+        <div class="section-title"><i class="bi bi-bar-chart-steps"></i> Importancias (top seleccionadas)</div>
+        <div class="section-desc">Impacto relativo de las variables finales tras la reducción.</div>
+        <div class="table-responsive">{{ feature_importances_reduced_html|safe }}</div>
+
+        
+        <!-- 🔹 FIN BLOQUE NUEVO -->
+
+        <div class="section-title"><i class="bi bi-database-fill"></i> Vista previa del dataset reducido</div>
+        <div class="section-desc">Primeros registros después de aplicar la selección de características.</div>
+        <div class="table-responsive">{{ X_train_reduced_head_html|safe }}</div>
+
+
+
+        <div class="section-title"><i class="bi bi-bar-chart-fill"></i> Comparativa F1-Score</div>
+        <div class="text-center my-3">
+          <img src="{{ f1_plot_url }}" alt="Comparativa F1-Score" class="img-fluid rounded shadow-lg" style="max-width: 80%; border: 2px solid #224c7e;">
+        </div>
+        
+      </div>
+
+    {% endif %}
+  </div>
+
+  <div class="text-center my-4">
+    <a href="{% url 'ml_app:index' %}" class="btn btn-custom"><i class="bi bi-upload"></i> Subir otro dataset</a>
+  </div>
+
+  <footer>
+    © 2025 Proyecto ML — Comparativa de Selección de Características
+  </footer>
+
+</body>
+
+</html>
